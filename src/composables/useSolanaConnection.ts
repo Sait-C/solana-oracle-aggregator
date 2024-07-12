@@ -7,7 +7,7 @@ export async function useConnection(): Promise<Connection | null> {
   const connection = computed(() => store.getters["connection/getConnection"]);
 
   if (!connection.value) {
-    const newConnection = new Connection(process.env.VUE_APP_CLUSTER_URL);
+    const newConnection = new Connection(`${process.env.VUE_APP_CLUSTER_URL}`);
     await store.dispatch("connection/setConnection", newConnection);
   }
 
