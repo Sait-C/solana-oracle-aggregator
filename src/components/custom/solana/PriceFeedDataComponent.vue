@@ -6,6 +6,7 @@
 import { PriceFeedDataProps } from "@/types";
 import { runQuery } from "@/services/pyth.service";
 import { pullPriceFeed } from "@/services/chainlink.service";
+import { loadProgramAndFetch } from "@/services/switchboard.service";
 import { ref, onMounted, defineProps } from "vue";
 
 const latestPrice = ref();
@@ -16,5 +17,6 @@ onMounted(async () => {
   latestPrice.value = await pullPriceFeed(props.priceFeedAddress);
   console.log(latestPrice.value);
   await runQuery();
+  await loadProgramAndFetch();
 });
 </script>
