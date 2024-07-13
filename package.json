@@ -10,11 +10,9 @@
   "dependencies": {
     "@pythnetwork/client": "^2.21.1",
     "@solana/web3.js": "^1.95.0",
-    "@switchboard-xyz/solana.js": "^3.2.5",
-    "browserify-zlib": "^0.2.0",
+    "axios": "^1.7.2",
     "bs58": "^6.0.0",
     "core-js": "^3.8.3",
-    "node-polyfill-webpack-plugin": "^4.0.0",
     "register-service-worker": "^1.7.2",
     "sass": "^1.77.7",
     "sass-loader": "^14.2.1",

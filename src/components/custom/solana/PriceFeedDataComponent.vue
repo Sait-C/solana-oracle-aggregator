@@ -1,22 +1,17 @@
 <template>
-  <div>{{ latestPrice }}</div>
+  <div>Price Feed Data Component</div>
 </template>
 
 <script setup lang="ts">
-import { PriceFeedDataProps } from "@/types";
-import { runQuery } from "@/services/pyth.service";
-import { pullPriceFeed } from "@/services/chainlink.service";
-import { loadProgramAndFetch } from "@/services/switchboard.service";
-import { ref, onMounted, defineProps } from "vue";
-
-const latestPrice = ref();
-const props = defineProps<PriceFeedDataProps>();
+import { onMounted } from "vue";
+import pythService from "@/services/feeds/pyth.service";
+import chainlinkService from "@/services/feeds/chainlink.service";
 
 onMounted(async () => {
-  console.log(props.priceFeedAddress);
-  latestPrice.value = await pullPriceFeed(props.priceFeedAddress);
-  console.log(latestPrice.value);
-  await runQuery();
-  await loadProgramAndFetch();
+  const priceFeedsFromPythService = await pythService.getAllPriceFeeds();
+  const priceFeedsFromChainlinkService =
+    await chainlinkService.getAllPriceFeeds();
+  console.log(priceFeedsFromChainlinkService);
+  console.log(priceFeedsFromPythService);
 });
 </script>
