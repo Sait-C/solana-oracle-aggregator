@@ -1,6 +1,5 @@
 // src/services/pythService.js
 
-import { clusterApiUrl, Connection } from "@solana/web3.js";
 import {
   PythCluster,
   PythHttpClient,
@@ -10,13 +9,15 @@ import { IPriceFeedService } from "./IPriceFeedService";
 import { PriceFeedModel, PriceFeedSymbol } from "@/types/models/PriceFeedModel";
 import { IAssetService } from "../assets/IAssetService";
 import pythService from "../assets/pyth.service";
+import useSolanaConnection from "@/composables/useSolanaConnection";
 
 const cluster: PythCluster = "devnet";
 
-const connection = new Connection(clusterApiUrl(cluster));
+const connection = await useSolanaConnection();
 const pythPublicKey = getPythProgramKeyForCluster(cluster);
 
 class PythService implements IPriceFeedService {
+  serviceName = "Pyth";
   pythClient: PythHttpClient | null;
   assetService: IAssetService;
   constructor(assetService: IAssetService) {

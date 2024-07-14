@@ -1,9 +1,8 @@
-import { useStore } from "vuex";
+import store from "../store";
 import { Connection } from "@solana/web3.js";
 import { computed } from "vue";
 
-export async function useConnection(): Promise<Connection | null> {
-  const store = useStore();
+export default async function useSolanaConnection(): Promise<Connection> {
   const connection = computed(() => store.getters["connection/getConnection"]);
 
   if (!connection.value) {

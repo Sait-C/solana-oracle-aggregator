@@ -5,6 +5,7 @@ import { IAssetService } from "../assets/IAssetService";
 import pythService from "../assets/pyth.service";
 
 class ChainlinkService implements IPriceFeedService {
+  serviceName = "Chainlink";
   assetService: IAssetService;
   constructor(assetService: IAssetService) {
     this.assetService = assetService;
@@ -19,7 +20,7 @@ class ChainlinkService implements IPriceFeedService {
           `data/pricemultifull?fsyms=${symbol.fsyms}&tsyms=${symbol.tsyms}`,
           {
             headers: {
-              authorization: `Apikey f8d63c185199b4c6a78d4d3f42d45248199d2a4ee5e037a532a3784d241eb752`,
+              authorization: `Apikey ${process.env.VUE_APP_CRYPTOCOMPARE_API_KEY}`,
             },
           }
         );
@@ -46,17 +47,23 @@ class ChainlinkService implements IPriceFeedService {
       `data/pricemultifull?fsyms=${symbol.fsyms}&tsyms=${symbol.tsyms}`,
       {
         headers: {
-          authorization: `Apikey f8d63c185199b4c6a78d4d3f42d45248199d2a4ee5e037a532a3784d241eb752`,
+          authorization: `Apikey ${process.env.VUE_APP_CRYPTOCOMPARE_API_KEY}`,
         },
       }
     );
     if (result.data.RAW) {
+      console.log(result);
       const priceFeed: PriceFeedModel = {
         symbol,
         price:
           symbol.fsyms && symbol.tsyms
             ? result.data.RAW[symbol.fsyms][symbol.tsyms].PRICE
             : 0,
+        image:
+          symbol.fsyms && symbol.tsyms
+            ? "https://www.cryptocompare.com/" +
+              result.data.RAW[symbol.fsyms][symbol.tsyms].IMAGEURL
+            : null,
       };
       return priceFeed;
     }

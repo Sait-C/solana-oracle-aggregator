@@ -1,0 +1,16 @@
+.tag {
+  z-index: 7;
+  grid-column-gap: 0.5rem;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  display: flex;
+  font-family: $font-family-primary-regular;
+  text-decoration: none;
+  color: $color-primary-100;
+  font-size: $font-size-xs;
+}

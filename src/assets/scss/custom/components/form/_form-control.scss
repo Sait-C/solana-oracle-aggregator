@@ -1,0 +1,44 @@
+
+.form-field {
+  font-family: $font-family-primary-regular;
+  max-width: fit-content;
+  .form-control {
+    z-index: 5;
+    width: 100%;
+    min-height: $space-size-l;
+    border: 1px solid #89859b;
+    color: #3b374c;
+    background-color: transparent;
+    border-radius: $form-control-border-radius-primary;
+    margin-bottom: 0;
+    padding: $form-control-padding-block $form-control-padding-inline;
+    font-size: $font-size-s;
+    font-weight: 400;
+    line-height: 1.1rem;
+    transition: background-color 0.2s, border-color 0.5s;
+    position: relative;
+    outline: none;
+    font-family: $font-family-primary-regular;
+
+    &:hover {
+      background-color: $color-primary-200;
+      border-color: $color-secondary-700;
+    }
+  }
+
+  &.reverse-color {
+    .form-control {
+      color: white;
+    }
+
+    &:hover {
+      .form-control {
+        color: #3b374c;
+      }
+    }
+  }
+
+  &.expanded {
+    width: 100%;
+  }
+}

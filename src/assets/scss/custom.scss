@@ -1,6 +1,14 @@
+// Configuration
+@import "./bootstrap/functions";
 // Variables
 @import "./custom/variable";
 @import "./custom/variables/index";
+
+// Bootstrap variables
+@import "./bootstrap/variables";
+
+// Bootstrap mixins
+@import "./bootstrap/mixins";
 
 // Custom mixins
 @import "./custom/helper/mixins";

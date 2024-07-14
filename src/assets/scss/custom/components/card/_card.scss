@@ -1,0 +1,79 @@
+.price-feed-card {
+    background: $color-secondary-500;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: start;
+    justify-content: center;
+    padding: 2rem;
+    height: $card-height-size;
+    max-width: 20rem;
+    font-family: $font-family-primary-regular;
+    color: $color-primary-100;
+
+    .header-of-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 0.5rem;
+        width: 100%;
+
+        img {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .symbol {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            gap: 0.1rem;
+        }
+
+        .symbol .symbol-asset-type {
+            font-size: $font-size-s;
+            color: $color-secondary-300;
+        }
+
+        .symbol .symbol-name {
+            font-size: $font-size-m;
+        }
+    }
+    .body-of-card {
+        font-family: $font-family-primary-bold;
+        font-size: $font-size-xl;
+        width: 100%;
+    }
+
+    .body-of-card .error {
+        font-size: $font-size-s;
+        font-family: $font-family-primary-regular;
+    }
+
+    .footer-of-card {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        width: 100%;
+        gap: 0.5rem;
+
+        .services-list {
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: start;
+            gap: 0.3rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .price-feed-card {
+      width: 100%;
+    }
+  }
