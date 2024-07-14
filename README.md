@@ -2,15 +2,16 @@
 
 [![MIT License][license-shield]][license-url]
 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <h3 align="center">Oracle Aggregator</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    The way to get reliable, real price feed data with a flexible and clean system
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>View Demo</strong></a>
+    <a href="#"><strong>View Live Site Demo</strong></a>
+    ·
+    <a href="#"><strong>View Video Demonstration</strong></a>
   </p>
 </div>
 
@@ -41,10 +42,7 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-
-[![Oracle Aggregator Screen Shot][product-screenshot]](https://i.ibb.co/SQDF0yd/product-screenshot.png)
-
-
+![product-screenshot](https://github.com/user-attachments/assets/46539d6e-3cc5-4e59-8f8a-1f0661d2dafb)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
