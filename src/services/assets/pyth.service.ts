@@ -32,7 +32,6 @@ class PythAssetService implements IAssetService {
           tsyms: product?.quote_currency,
           fsyms: product?.base,
         };
-        console.log(assetSymbol.tsyms);
         this.assetSymbols.push(assetSymbol);
       }
     }

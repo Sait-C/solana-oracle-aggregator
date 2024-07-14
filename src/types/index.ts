@@ -7,4 +7,4 @@ export * from "./components/PriceFeedDataComponent";
 // All types from the store folder
 export * from "./store/ConnectionState";
 
-export * from "./result/Result";
+export * from "./result";
