@@ -9,9 +9,9 @@
   <p align="center">
     The way to get reliable, real price feed data with a flexible and clean system
     <br />
-    <a href="#"><strong>View Live Site Demo</strong></a>
+    <a href="https://solana-oracle-aggregator-theta.vercel.app/"><strong>View Live Site Demo</strong></a>
     ·
-    <a href="#"><strong>View Video Demonstration</strong></a>
+    <a href="https://www.loom.com/share/b7e3bdfeab4b40f58b540249727232c0?sid=53e35b82-17e8-4d99-9cd5-81bceda6c063"><strong>View Video Demonstration</strong></a>
   </p>
 </div>
 
