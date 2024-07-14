@@ -2,9 +2,9 @@
   <MainLayout>
     <template v-slot:content>
       <div id="home">
-        <PriceFeedDataComponent
-          priceFeedAddress="6PxBx93S8x3tno1TsFZwT5VqP8drrRCbCXygEXYNkFJe"
-        />
+        <div v-if="symbolsOfAssets.length > 0">
+          <PriceFeedDataComponent :symbol="symbolsOfAssets[0]" />
+        </div>
       </div>
     </template>
   </MainLayout>
@@ -13,6 +13,17 @@
 <script setup>
 import MainLayout from "@/layouts/guest/MainLayout.vue";
 import PriceFeedDataComponent from "@/components/custom/solana/PriceFeedDataComponent.vue";
+import { useStore } from "vuex";
+import { computed, onBeforeMount } from "vue";
+
+const store = useStore();
+
+const symbolsOfAssets = computed(
+  () => store.getters["asset/getSymbolsOfAssets"]
+);
+onBeforeMount(async () => {
+  await store.dispatch("asset/getAllSymbolsOfAssets");
+});
 </script>
 
 <style scoped>

@@ -6,9 +6,9 @@ import {
   PythHttpClient,
   getPythProgramKeyForCluster,
 } from "@pythnetwork/client";
-import { PriceFeedService } from "./PriceFeedService";
-import { PriceFeedModel } from "@/types/models/PriceFeedModel";
-import { AssetService } from "../assets/AssetService";
+import { IPriceFeedService } from "./IPriceFeedService";
+import { PriceFeedModel, PriceFeedSymbol } from "@/types/models/PriceFeedModel";
+import { IAssetService } from "../assets/IAssetService";
 import pythService from "../assets/pyth.service";
 
 const cluster: PythCluster = "devnet";
@@ -16,10 +16,10 @@ const cluster: PythCluster = "devnet";
 const connection = new Connection(clusterApiUrl(cluster));
 const pythPublicKey = getPythProgramKeyForCluster(cluster);
 
-class PythService implements PriceFeedService {
+class PythService implements IPriceFeedService {
   pythClient: PythHttpClient | null;
-  assetService: AssetService;
-  constructor(assetService: AssetService) {
+  assetService: IAssetService;
+  constructor(assetService: IAssetService) {
     this.assetService = assetService;
     this.pythClient = new PythHttpClient(connection, pythPublicKey);
   }
@@ -46,6 +46,24 @@ class PythService implements PriceFeedService {
       }
     }
     return priceFeeds;
+  }
+
+  // @desc Get single price feed by price feed symbol
+  async getSinglePriceFeed(
+    symbol: PriceFeedSymbol
+  ): Promise<PriceFeedModel | null> {
+    const data = await this.pythClient?.getData();
+    const price = data?.productPrice.get(symbol.fullSymbol);
+    // Check if it is available
+    if (price?.aggregate.status) {
+      const priceFeed: PriceFeedModel = {
+        symbol,
+        price: price?.aggregate.price ?? null,
+      };
+      return priceFeed;
+    }
+
+    return null;
   }
 }
 

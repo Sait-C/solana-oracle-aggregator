@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 
 import globalComponents from "./plugins/global-components";
+import globalProvides from "./plugins/globalProvides";
 
 import "./registerServiceWorker";
 
@@ -14,5 +15,6 @@ app.use(store);
 
 // Custom Components & Directives
 app.use(globalComponents);
+app.use(globalProvides);
 
 app.mount("#app");

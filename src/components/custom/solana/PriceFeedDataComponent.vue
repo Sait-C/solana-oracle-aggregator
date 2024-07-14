@@ -1,17 +1,21 @@
 <template>
-  <div>Price Feed Data Component</div>
+  <div v-if="result.success">
+    {{ result.data.symbol.fullSymbol }}
+    {{ result.data.price }}
+  </div>
+  <div v-if="!result.success">
+    {{ result.message }}
+  </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
-import pythService from "@/services/feeds/pyth.service";
-import chainlinkService from "@/services/feeds/chainlink.service";
+import { defineProps } from "vue";
+import { useSinglePriceFeed } from "@/composables/useSinglePriceFeed";
+import { PriceFeedSymbol } from "@/types";
 
-onMounted(async () => {
-  const priceFeedsFromPythService = await pythService.getAllPriceFeeds();
-  const priceFeedsFromChainlinkService =
-    await chainlinkService.getAllPriceFeeds();
-  console.log(priceFeedsFromChainlinkService);
-  console.log(priceFeedsFromPythService);
+const props = defineProps({
+  symbol: { type: Object as () => PriceFeedSymbol, required: true },
 });
+
+const result = useSinglePriceFeed(props.symbol);
 </script>

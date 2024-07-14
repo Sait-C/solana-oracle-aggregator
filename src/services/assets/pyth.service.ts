@@ -1,5 +1,5 @@
 import { PriceFeedSymbol } from "@/types";
-import { AssetService } from "./AssetService";
+import { IAssetService } from "./IAssetService";
 import { clusterApiUrl, Connection } from "@solana/web3.js";
 import {
   PythCluster,
@@ -12,21 +12,12 @@ const cluster: PythCluster = "devnet";
 const connection = new Connection(clusterApiUrl(cluster));
 const pythPublicKey = getPythProgramKeyForCluster(cluster);
 
-class PythAssetService implements AssetService {
+class PythAssetService implements IAssetService {
   pythClient: PythHttpClient | null;
   assetSymbols: Array<PriceFeedSymbol>;
   constructor() {
     this.pythClient = new PythHttpClient(connection, pythPublicKey);
     this.assetSymbols = [];
-    this.initialize();
-  }
-
-  async initialize() {
-    try {
-      await this.getSymbolsOfAssets();
-    } catch (error) {
-      console.error("Error:", error);
-    }
   }
 
   // @desc Get symbols of assets via Pyth and return necessary data to fetch prices
