@@ -52,7 +52,6 @@ class ChainlinkService implements IPriceFeedService {
       }
     );
     if (result.data.RAW) {
-      console.log(result);
       const priceFeed: PriceFeedModel = {
         symbol,
         price:

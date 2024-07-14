@@ -9,9 +9,9 @@
       v-model:value="searchKey"
     />
   </div>
-  <div v-if="symbolsOfAssets.length > 0" id="price-feed-list" class="container">
+  <div id="price-feed-list" class="container">
     <div
-      v-for="symbol in filteredAssets.slice(0, 4)"
+      v-for="symbol in filteredAssets"
       :key="symbol.fullSymbol"
       v-intersection-observer="() => loadSymbol(symbol.fullSymbol)"
       class="intersect-container"

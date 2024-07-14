@@ -7,7 +7,7 @@ import {
 } from "@pythnetwork/client";
 import useSolanaConnection from "@/composables/useSolanaConnection";
 
-const cluster: PythCluster = "devnet";
+const cluster: PythCluster = "mainnet-beta";
 
 const connection = await useSolanaConnection();
 const pythPublicKey = getPythProgramKeyForCluster(cluster);

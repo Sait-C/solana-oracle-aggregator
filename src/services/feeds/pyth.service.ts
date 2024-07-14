@@ -11,7 +11,7 @@ import { IAssetService } from "../assets/IAssetService";
 import pythService from "../assets/pyth.service";
 import useSolanaConnection from "@/composables/useSolanaConnection";
 
-const cluster: PythCluster = "devnet";
+const cluster: PythCluster = "mainnet-beta";
 
 const connection = await useSolanaConnection();
 const pythPublicKey = getPythProgramKeyForCluster(cluster);
